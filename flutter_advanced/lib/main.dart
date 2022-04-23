@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_advanced/101/custom_widget_learn.dart';
 import 'package:flutter_advanced/101/text_field_learn.dart';
+import 'package:flutter_advanced/demos/color_demos_view.dart';
+import 'package:flutter_advanced/demos/color_lifecycle_view.dart';
 import 'package:flutter_advanced/demos/note_demos_view.dart';
 
 void main() {
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
               systemOverlayStyle: SystemUiOverlayStyle.light,
               backgroundColor: Colors.transparent,
               elevation: 0)),
-      home: TextFieldLearn(),
+      home: ColorLifeCycleView(),
     );
   }
 }

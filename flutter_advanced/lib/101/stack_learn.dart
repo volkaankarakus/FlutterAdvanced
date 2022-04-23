@@ -23,7 +23,7 @@ class StackLearn extends StatelessWidget {
 
           //
 
-          Positioned.fill(s
+          Positioned.fill(
               top: 20,
               child: Container(
                 color: Colors.blue,
