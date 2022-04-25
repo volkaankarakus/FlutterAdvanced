@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_advanced/101/custom_widget_learn.dart';
 import 'package:flutter_advanced/101/list_view_learn.dart';
+import 'package:flutter_advanced/101/navigation_learn.dart';
 import 'package:flutter_advanced/101/text_field_learn.dart';
 import 'package:flutter_advanced/demos/color_demos_view.dart';
 import 'package:flutter_advanced/demos/color_lifecycle_view.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
               systemOverlayStyle: SystemUiOverlayStyle.light,
               backgroundColor: Colors.transparent,
               elevation: 0)),
-      home: MyCollectionDemos(),
+      home: NavigationLearn(),
     );
   }
 }
