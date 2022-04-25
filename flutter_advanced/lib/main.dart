@@ -5,6 +5,7 @@ import 'package:flutter_advanced/101/list_view_learn.dart';
 import 'package:flutter_advanced/101/text_field_learn.dart';
 import 'package:flutter_advanced/demos/color_demos_view.dart';
 import 'package:flutter_advanced/demos/color_lifecycle_view.dart';
+import 'package:flutter_advanced/demos/my_collection_demos.dart';
 import 'package:flutter_advanced/demos/note_demos_view.dart';
 
 void main() {
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
               systemOverlayStyle: SystemUiOverlayStyle.light,
               backgroundColor: Colors.transparent,
               elevation: 0)),
-      home: ListViewLearn(),
+      home: MyCollectionDemos(),
     );
   }
 }
