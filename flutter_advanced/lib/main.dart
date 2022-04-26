@@ -4,6 +4,7 @@ import 'package:flutter_advanced/101/custom_widget_learn.dart';
 import 'package:flutter_advanced/101/list_view_learn.dart';
 import 'package:flutter_advanced/101/navigation_learn.dart';
 import 'package:flutter_advanced/101/text_field_learn.dart';
+import 'package:flutter_advanced/202/tab_learn.dart';
 import 'package:flutter_advanced/demos/color_demos_view.dart';
 import 'package:flutter_advanced/demos/color_lifecycle_view.dart';
 import 'package:flutter_advanced/demos/my_collection_demos.dart';
@@ -22,25 +23,41 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
+
+        tabBarTheme: TabBarTheme(
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.white,
+          // indicatorSize: TabBarIndicatorSize.label,
+        ),
+
+        bottomAppBarTheme: BottomAppBarTheme(
+          shape: CircularNotchedRectangle(),
+        ),
+
           progressIndicatorTheme:
               ProgressIndicatorThemeData(color: Colors.white),
+
           listTileTheme: ListTileThemeData(contentPadding: EdgeInsets.zero),
+
           inputDecorationTheme: InputDecorationTheme(
             filled: true,
             fillColor: Colors.white,
             iconColor: Colors.red,
             border: OutlineInputBorder(),
-
           ),
+
           cardTheme: CardTheme(
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20))),
+                  borderRadius: BorderRadius.circular(20))
+          ),
+
           appBarTheme: AppBarTheme(
               centerTitle: true,
               systemOverlayStyle: SystemUiOverlayStyle.light,
               backgroundColor: Colors.transparent,
               elevation: 0)),
-      home: NavigationLearn(),
+
+      home: TabLearn(),
     );
   }
 }
