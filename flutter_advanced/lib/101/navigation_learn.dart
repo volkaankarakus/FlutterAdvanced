@@ -13,22 +13,38 @@ class NavigationLearn extends StatefulWidget {
 
 class _NavigationLearnState extends State<NavigationLearn>
     with NavigatorManager {
+
+  List<int> selectedItems = [];
+
+  void addSelected(int index, bool isAdd){
+    setState(() {
+      isAdd ? selectedItems.add(index) : selectedItems.remove(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
         itemBuilder: (context, index) {
-          return Placeholder();
+          return TextButton(
+            onPressed: () async{
+              final response = await navigateToWidgetNormal<bool>(context,
+                  NavigateDetailLearn(isOK: selectedItems.contains(index)));
+              if(response is bool){
+                addSelected(index,response);
+              }
+            },
+            child: Placeholder(
+              color: selectedItems.contains(index) ? Colors.green : Colors.red,
+            ),
+          );
         },
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.navigation_rounded),
         onPressed: () async{
-          final response = await navigateToWidgetNormal<bool>(context, NavigateDetailLearn());
 
-          if(response == true){
-
-          }
         },
       ),
     );
