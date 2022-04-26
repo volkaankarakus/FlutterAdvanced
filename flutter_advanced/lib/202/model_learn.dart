@@ -48,6 +48,8 @@ class PostModel5{
   final String _title;
   final String _body;
 
+  int get userId => _userId;
+
   PostModel5({
     required int userId,
     required int id,
@@ -74,5 +76,32 @@ class PostModel6{
     _title = title;
     _body = body;
   }
+}
 
+// ****** METHOD 7 ******** (BEST FOR NETWORK DATA)
+// If the model is not created locally;
+//   For example, we created a textfield, but we do not fill it.
+class PostModel7 {
+  final int? userId;
+  final int? id;
+  final String? title;
+  final String? body;
+
+  PostModel7({this.userId, this.id, this.title, this.body});
+
+
+  PostModel7 copyWith({ // it preserves other values when one value changes
+
+    int? userId,
+    int? id,
+    String? title,
+    String? body,
+  }) {
+    return PostModel7(
+      userId: userId ?? this.userId,
+      id: id ?? this.id,
+      title: title ?? this.title,
+      body: body ?? this.body,
+    );
+  }
 }
