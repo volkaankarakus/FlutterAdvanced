@@ -1,6 +1,6 @@
 // METHOD 1
 // variables can be null on fetching process.
-class PostModel{
+class PostModel1{
   int? userId;
   int? id;
   String? title;
