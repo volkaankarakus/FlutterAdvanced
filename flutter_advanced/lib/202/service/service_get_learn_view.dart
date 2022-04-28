@@ -1,17 +1,18 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced/202/service/comments_learn_view.dart';
 import 'package:flutter_advanced/202/service/post_model.dart';
 import 'package:flutter_advanced/202/service/post_service.dart';
 
-class ServiceLearn extends StatefulWidget {
-  const ServiceLearn({Key? key}) : super(key: key);
+class ServiceGetLearn extends StatefulWidget {
+  const ServiceGetLearn({Key? key}) : super(key: key);
 
   @override
-  State<ServiceLearn> createState() => _ServiceLearnState();
+  State<ServiceGetLearn> createState() => _ServiceGetLearnState();
 }
 
-class _ServiceLearnState extends State<ServiceLearn> {
+class _ServiceGetLearnState extends State<ServiceGetLearn> {
   List<PostModel>? _items;
   bool _isLoading = false;
   late final Dio _networkManager; // It is not correct to create a Dio for each request.
@@ -92,6 +93,10 @@ class _PostCard extends StatelessWidget {
     return Card(
       margin: EdgeInsets.only(bottom: 20),
       child: ListTile(
+        onTap: (){
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => CommentsLearnView(postId: _model?.id),));
+        },
         title: Text(_model?.title ?? ''),
         subtitle: Text(_model?.body ?? ''),
       ),

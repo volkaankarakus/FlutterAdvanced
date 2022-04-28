@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_advanced/202/service/comment_model.dart';
 import 'package:flutter_advanced/202/service/post_model.dart';
 
 
@@ -10,6 +11,7 @@ abstract class IPostService{
   Future<List<PostModel>?> fetchItemsAdvanced();
   Future<bool> _putItemToService(PostModel postModel,int id);
   Future<bool> _deleteItemToService(PostModel postModel,int id);
+  Future<List<CommentModel>?> fetchRelatedCommentsWithPostId(int postId);
 }
 
 
@@ -29,7 +31,7 @@ class PostServices implements IPostService{
           data: postModel);
       return response.statusCode == HttpStatus.created;
     }on DioError catch(exception){
-      _ShowDebugError.showDioError(exception);
+      _ShowDebugError.showDioError(exception,this);
     }
     return false;
   }
@@ -49,7 +51,7 @@ class PostServices implements IPostService{
         return null;
       }
     }on DioError catch(exception){
-      _ShowDebugError.showDioError(exception);
+      _ShowDebugError.showDioError(exception,this);
     }
   }
 
@@ -63,7 +65,7 @@ class PostServices implements IPostService{
       return response.statusCode == HttpStatus.ok;
 
     }on DioError catch(exception){
-      _ShowDebugError.showDioError(exception);
+      _ShowDebugError.showDioError(exception,this);
     }
     return false;
   }
@@ -77,20 +79,38 @@ class PostServices implements IPostService{
       return response.statusCode == HttpStatus.ok;
 
     }on DioError catch(exception){
-      _ShowDebugError.showDioError(exception);
+      _ShowDebugError.showDioError(exception,this);
     }
     return false;
+  }
+
+  @override
+  Future<List<CommentModel>?> fetchRelatedCommentsWithPostId(int postId) async {
+    try{
+      final response = await _networkManager.get(_PostServicePaths.comments.name,
+      queryParameters: {_PostQueryPaths.postId.name : postId});
+      if(response.statusCode == HttpStatus.ok){
+        final _datas = response.data;
+        if(_datas is List){
+          return _datas.map((e) => CommentModel.fromJson(e)).toList();
+        }
+      }
+    }on DioError catch(exception){
+      _ShowDebugError.showDioError(exception,this);
+    }
   }
 }
 
 class _ShowDebugError{
-  static void showDioError(DioError error){
+  static void showDioError<T>(DioError error,T type){
     if(kDebugMode){
       print(error.message);
+      print(type);
+      print('---------');
     }
   }
 }
 
-enum _PostServicePaths{
-  posts,comments
-}
+enum _PostServicePaths{posts,comments}
+
+enum _PostQueryPaths{postId,}
