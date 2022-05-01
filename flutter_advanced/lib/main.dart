@@ -5,6 +5,7 @@ import 'package:flutter_advanced/101/list_view_learn.dart';
 import 'package:flutter_advanced/101/navigation_learn.dart';
 import 'package:flutter_advanced/101/text_field_learn.dart';
 import 'package:flutter_advanced/202/animated_learn_view.dart';
+import 'package:flutter_advanced/202/form_learn_view.dart';
 import 'package:flutter_advanced/202/image_learn_202.dart';
 import 'package:flutter_advanced/202/model_learn_view.dart';
 import 'package:flutter_advanced/202/package_learn_view.dart';
@@ -64,7 +65,7 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0)),
 
-      home: AnimatedLearnView(),
+      home: FormLearnView(),
     );
   }
 }
