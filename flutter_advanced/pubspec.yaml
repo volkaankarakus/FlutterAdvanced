@@ -42,6 +42,9 @@ dependencies:
   #Google
   url_launcher: ^6.0.20
 
+  #Cache
+  shared_preferences: ^2.0.13
+
 
 dev_dependencies:
   flutter_test:
