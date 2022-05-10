@@ -13,6 +13,7 @@ import 'package:flutter_advanced/202/service/service_get_learn_view.dart';
 import 'package:flutter_advanced/202/service/service_post_learn_view.dart';
 import 'package:flutter_advanced/202/tab_learn.dart';
 import 'package:flutter_advanced/303/callback_learn.dart';
+import 'package:flutter_advanced/303/tabbar_advanced.dart';
 import 'package:flutter_advanced/demos/color_demos_view.dart';
 import 'package:flutter_advanced/demos/color_lifecycle_view.dart';
 import 'package:flutter_advanced/demos/my_collection_demos.dart';
@@ -66,7 +67,7 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0)),
 
-      home: CallbackLearn(),
+      home: TabbarAdvanced(),
     );
   }
 }
