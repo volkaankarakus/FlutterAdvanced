@@ -13,17 +13,22 @@ import 'package:flutter_advanced/202/service/service_get_learn_view.dart';
 import 'package:flutter_advanced/202/service/service_post_learn_view.dart';
 import 'package:flutter_advanced/202/tab_learn.dart';
 import 'package:flutter_advanced/303/callback_learn.dart';
+import 'package:flutter_advanced/303/navigator/navigate_home_detail.dart';
+import 'package:flutter_advanced/303/navigator/navigate_home_view.dart';
+import 'package:flutter_advanced/303/part/feed_view.dart';
 import 'package:flutter_advanced/303/tabbar_advanced.dart';
 import 'package:flutter_advanced/demos/color_demos_view.dart';
 import 'package:flutter_advanced/demos/color_lifecycle_view.dart';
 import 'package:flutter_advanced/demos/my_collection_demos.dart';
 import 'package:flutter_advanced/demos/note_demos_view.dart';
+import 'package:flutter_advanced/product/navigator/navigator_custom.dart';
+import 'package:flutter_advanced/product/navigator/navigator_routes.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget with NavigatorCustom {
   const MyApp({Key? key}) : super(key: key);
 
   @override
@@ -67,7 +72,16 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0)),
 
-      home: TabbarAdvanced(),
+      initialRoute: "/",
+      onUnknownRoute: (settings) { // its for 404 Not Found Page
+        return MaterialPageRoute(
+            builder: (context){
+              return FormLearnView();
+            });
+      },
+      // routes: NavigatorRoutes().items,   // you can use "routes" or onGenerateRoute
+      onGenerateRoute: onGenerateRoute,
+      //home: TabbarAdvanced(),
     );
   }
 }

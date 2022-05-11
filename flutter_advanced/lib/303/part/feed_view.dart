@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/202/service/post_model.dart';
 import 'package:flutter_advanced/202/service/post_service.dart';
+import 'package:flutter_advanced/product/navigator/navigator_routes.dart';
 
 class FeedView extends StatefulWidget {
   const FeedView({Key? key}) : super(key: key);
@@ -17,7 +18,14 @@ class _FeedViewState extends State<FeedView> with AutomaticKeepAliveClientMixin{
   void initState() {
     super.initState();
     _itemsFuture = _postService.fetchItemsAdvanced();
+    navigateToHome();
   }
+
+  Future<void> navigateToHome()async{
+    await Future.delayed(Duration(seconds: 1));
+    Navigator.of(context).pushReplacementNamed(NavigateRoutes.home.withParaf); // cannot go back
+  }
+
 
   @override
   Widget build(BuildContext context) {
