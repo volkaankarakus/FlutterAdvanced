@@ -22,6 +22,7 @@ import 'package:flutter_advanced/demos/color_lifecycle_view.dart';
 import 'package:flutter_advanced/demos/my_collection_demos.dart';
 import 'package:flutter_advanced/demos/note_demos_view.dart';
 import 'package:flutter_advanced/product/navigator/navigator_custom.dart';
+import 'package:flutter_advanced/product/navigator/navigator_manager_advanced.dart';
 import 'package:flutter_advanced/product/navigator/navigator_routes.dart';
 
 void main() {
@@ -81,6 +82,7 @@ class MyApp extends StatelessWidget with NavigatorCustom {
       },
       // routes: NavigatorRoutes().items,   // you can use "routes" or onGenerateRoute
       onGenerateRoute: onGenerateRoute,
+      navigatorKey: NavigatorManagerAdvanced.instance.navigatorGlobalKey,
       //home: TabbarAdvanced(),
     );
   }
