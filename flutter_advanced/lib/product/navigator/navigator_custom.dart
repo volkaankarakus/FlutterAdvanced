@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/202/form_learn_view.dart';
+import 'package:flutter_advanced/303/mobx_image_picker/view/mobx_image_upload_view.dart';
 import 'package:flutter_advanced/303/navigator/navigate_home_detail.dart';
 import 'package:flutter_advanced/303/navigator/navigate_home_view.dart';
 import 'package:flutter_advanced/303/part/feed_view.dart';
@@ -21,7 +22,7 @@ mixin NavigatorCustom<T extends MyApp> on Widget{
 
     switch(_routes){
       case NavigateRoutes.init:
-        return _navigateToNormal(FormLearnView());
+        return _navigateToNormal(MobxImageUpload());
       case NavigateRoutes.home:
         return _navigateToNormal(NavigateHomeView());
       case NavigateRoutes.detail:

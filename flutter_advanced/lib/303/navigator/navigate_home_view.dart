@@ -25,3 +25,4 @@ class _NavigateHomeViewState extends State<NavigateHomeView> with NavigatorMixin
     );
   }
 }
+
