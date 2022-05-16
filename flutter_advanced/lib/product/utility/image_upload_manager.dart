@@ -7,20 +7,14 @@ class ImageUploadManager{
     //Pick an image
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
     return image;
+  }
 
-    /*
-    //Capture a photo
-    final XFile? capturePhotoCamera = await _picker.pickImage(source: ImageSource.camera);
-
-    //Pick a video
-    final XFile? pickVideoGallery = await _picker.pickVideo(source: ImageSource.gallery);
-
-    //Capture a video
-    final XFile? captureVideoCamera = await _picker.pickVideo(source: ImageSource.camera);
-
-    //Pick multiple images
-    final List<XFile>? pickMultipleImages = await _picker.pickMultiImage();
-
-     */
+  Future<XFile?> fetchFromCamera() async{
+    final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+    return image;
   }
 }
+
+
+
+

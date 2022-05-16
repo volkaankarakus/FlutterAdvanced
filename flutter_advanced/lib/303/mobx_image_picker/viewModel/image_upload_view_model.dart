@@ -54,6 +54,12 @@ abstract class _ImageUploadViewModelBase with Store{
     this.file = File(file.path);
   }
 
+  @action
+  bool? saveLocalFileTest(XFile? file){
+    this.file = File(file?.path ?? '');
+    return file?.path.isNotEmpty;
+  }
+
   void saveDataToService()async{
     if(file == null) return;
     changeLoading();
