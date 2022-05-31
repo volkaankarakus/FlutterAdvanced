@@ -17,6 +17,7 @@ import 'package:flutter_advanced/303/navigator/navigate_home_detail.dart';
 import 'package:flutter_advanced/303/navigator/navigate_home_view.dart';
 import 'package:flutter_advanced/303/part/feed_view.dart';
 import 'package:flutter_advanced/303/tabbar_advanced.dart';
+import 'package:flutter_advanced/404/bloc/feature/login/view/login_view.dart';
 import 'package:flutter_advanced/demos/color_demos_view.dart';
 import 'package:flutter_advanced/demos/color_lifecycle_view.dart';
 import 'package:flutter_advanced/demos/my_collection_demos.dart';
@@ -83,7 +84,7 @@ class MyApp extends StatelessWidget with NavigatorCustom {
       // routes: NavigatorRoutes().items,   // you can use "routes" or onGenerateRoute
       onGenerateRoute: onGenerateRoute,
       navigatorKey: NavigatorManagerAdvanced.instance.navigatorGlobalKey,
-      //home: TabbarAdvanced(),
+      home: LoginView(),
     );
   }
 }

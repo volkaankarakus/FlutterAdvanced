@@ -48,6 +48,12 @@ dependencies:
   json_serializable: ^6.1.5
   json_annotation: ^4.4.0
 
+  #Vexana
+  vexana: ^2.8.0
+
+  #Kartal
+  kartal: ^2.3.2
+
   #Cache
   shared_preferences: ^2.0.13
 
