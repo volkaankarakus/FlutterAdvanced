@@ -48,7 +48,7 @@ dependencies:
   json_serializable: ^6.1.5
   json_annotation: ^4.4.0
 
-  #Vexana
+  #Network
   vexana: ^2.8.0
 
   #Kartal
@@ -62,6 +62,9 @@ dependencies:
 
   #States
   flutter_mobx: ^2.0.4
+  flutter_bloc: ^8.0.1
+
+  equatable: ^2.0.3
 
 dev_dependencies:
   flutter_test:
