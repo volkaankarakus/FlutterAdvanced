@@ -63,6 +63,10 @@ dependencies:
   #States
   flutter_mobx: ^2.0.4
   flutter_bloc: ^8.0.1
+  provider: ^6.0.3
+
+  #Localization
+  easy_localization: ^3.0.1
 
   equatable: ^2.0.3
 
@@ -95,6 +99,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/png/image_collection.png
+    - assets/translations/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

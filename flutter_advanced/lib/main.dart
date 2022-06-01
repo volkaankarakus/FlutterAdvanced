@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_advanced/101/custom_widget_learn.dart';
@@ -22,12 +23,27 @@ import 'package:flutter_advanced/demos/color_demos_view.dart';
 import 'package:flutter_advanced/demos/color_lifecycle_view.dart';
 import 'package:flutter_advanced/demos/my_collection_demos.dart';
 import 'package:flutter_advanced/demos/note_demos_view.dart';
+import 'package:flutter_advanced/product/global/theme_notifier.dart';
+import 'package:flutter_advanced/product/init/localization_init.dart';
+import 'package:flutter_advanced/product/init/product_init.dart';
 import 'package:flutter_advanced/product/navigator/navigator_custom.dart';
 import 'package:flutter_advanced/product/navigator/navigator_manager_advanced.dart';
 import 'package:flutter_advanced/product/navigator/navigator_routes.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  final productInit = ProductInit();
+  await productInit.init();
+
+  runApp(
+    EasyLocalization(
+        supportedLocales: productInit.localizationInit.supportedLocales,
+        path: productInit.localizationInit.localizationPath,
+        child: MultiProvider(
+          providers: productInit.providers,
+          builder: (context,child) => MyApp(),
+        ))
+  );
 }
 
 class MyApp extends StatelessWidget with NavigatorCustom {
@@ -38,8 +54,20 @@ class MyApp extends StatelessWidget with NavigatorCustom {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme:
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
 
+
+      builder: (context,child){ // Protects the application from being scaled in phone settings
+        return MediaQuery(data:MediaQuery.of(context).copyWith(
+          textScaleFactor: 1
+        ), child: child ?? SizedBox());
+      },
+
+      theme: context.watch<ThemeNotifier>().currentTheme,
+
+      /*
       ThemeData.dark().copyWith(
         tabBarTheme: TabBarTheme(
           labelColor: Colors.white,
@@ -73,7 +101,7 @@ class MyApp extends StatelessWidget with NavigatorCustom {
               systemOverlayStyle: SystemUiOverlayStyle.light,
               backgroundColor: Colors.transparent,
               elevation: 0)),
-
+      */
       initialRoute: "/",
       onUnknownRoute: (settings) { // its for 404 Not Found Page
         return MaterialPageRoute(
